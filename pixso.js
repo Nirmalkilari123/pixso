@@ -1,30 +1,30 @@
-const API_KEY = 'YOUR_PIXSO_API_KEY';
+const API_KEY = "https://products-api-2ttf.onrender.com/api/products";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   fetchImages();
 });
 
 function fetchImages() {
-  const container = document.getElementById('image-container');
-  container.innerHTML = ''; // Clear previous images
+  const container = document.getElementById("image-container");
+  container.innerHTML = ""; // Clear previous images
 
   // Fetch images from Pixso API
-  fetch(`https://api.pixso.com/v1/images?api_key=${API_KEY}`)
-    .then(response => {
+  fetch(`https://products-api-2ttf.onrender.com/api/products`)
+    .then((response) => {
       if (!response.ok) {
-        throw new Error('Failed to fetch images');
+        throw new Error("Failed to fetch images");
       }
       return response.json();
     })
-    .then(data => {
-      data.forEach(image => {
-        const img = document.createElement('img');
+    .then((data) => {
+      data.forEach((image) => {
+        const img = document.createElement("img");
         img.src = image.url;
         img.alt = image.alt_text;
         container.appendChild(img);
       });
     })
-    .catch(error => {
-      console.error('Error fetching images:', error);
+    .catch((error) => {
+      console.error("Error fetching images:", error);
     });
 }
